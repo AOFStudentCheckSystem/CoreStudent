@@ -1,0 +1,28 @@
+server:
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: student-service
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+  datasource:
+    url: jdbc:mysql://${dbaddr:mysql}:${dbport:3306}/${dbname:aofchk_core_student}?useUnicode=yes&characterEncoding=UTF-8&useSSL=${useSSL:false}
+    username: ${dbuser:root}
+    password: ${dbpass:password}
+    dbcp2:
+      test-while-idle: true
+      validation-query: SELECT 1
