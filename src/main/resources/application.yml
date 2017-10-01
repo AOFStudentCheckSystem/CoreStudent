@@ -26,3 +26,5 @@ spring:
     dbcp2:
       test-while-idle: true
       validation-query: SELECT 1
+gcheck:
+  defaultEmailDomain: "@avonoldfarms.com"

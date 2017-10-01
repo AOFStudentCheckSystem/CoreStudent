@@ -30,11 +30,17 @@ class Student(
         @Column(unique = true, length = 64)
         var email: String? = null,
 
+        @Column
         var studentType: Short = 0,
 
+        @Column
         var dorm: String = "",
 
-        var grade: Int = 0
+        @Column
+        var grade: Int = 0,
+
+        @Column(unique = true, length = 64)
+        var phone: String? = null
 ) {
     @OneToMany(mappedBy = "owner", cascade = arrayOf(CascadeType.ALL), orphanRemoval = true)
     var cards: MutableSet<Card> = hashSetOf()
@@ -65,8 +71,8 @@ class Student(
         if (studentType != other.studentType) return false
         if (dorm != other.dorm) return false
         if (grade != other.grade) return false
+        if (phone != other.phone) return false
         if (cards !== other.cards) return false
-
         return true
     }
 }
